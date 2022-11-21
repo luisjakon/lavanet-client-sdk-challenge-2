@@ -1,0 +1,27 @@
+version: v1
+plugins:
+  - name: ts
+    path: ../node_modules/.bin/protoc-gen-ts_proto
+    out: ../src/proto
+    strategy: all
+    opt:
+      - esModuleInterop=true
+      - forceLong=long
+      - useOptionals="messages"
+    #   # - service=grpc-web
+    #   - outputServices=grpc-web
+  # - name: ts
+  # path: ../node_modules/.bin/protoc-gen-ts
+  # out: ../src/proto
+  # opt:
+  #   - service=grpc-web
+  #   - long_type_string
+  # strategy: all
+  # This will invoke protoc-gen-es and write output to src/gen
+  # - name: es
+  #   out: ../src/gen
+  #   opt: target=ts
+  # # # This will invoke protoc-gen-connect-web
+  # - name: connect-web
+  #   out: ../src/gen
+  #   opt: target=ts

@@ -1,0 +1,21 @@
+syntax = "proto3";
+package osmosis.gamm.v1beta1;
+
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/any.proto";
+
+option go_package = "github.com/osmosis-labs/osmosis/v12/x/gamm/types";
+
+service Query {
+
+  rpc NumPools(QueryNumPoolsRequest) returns (QueryNumPoolsResponse) {
+    option (google.api.http).get = "/osmosis/gamm/v1beta1/num_pools";
+  }
+}
+
+//=============================== NumPools
+message QueryNumPoolsRequest {}
+message QueryNumPoolsResponse {
+  uint64 num_pools = 1 [ (gogoproto.moretags) = "yaml:\"num_pools\"" ];
+}

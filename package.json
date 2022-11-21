@@ -1,0 +1,44 @@
+{
+  "name": "lavanet-client-sdk-challenge-2",
+  "version": "0.0.1",
+  "description": "Lavanet SDK Challenge",
+  "author": "Luis Jakón <luisjakon@gmail.com>",
+  "main": "index.js",
+  "scripts": {
+    "build:proto": "source ./bin/run-proto.sh",
+    "build:web": "cd examples/web_client && webpack && cp styles.css index.html dist/",
+    "build": "rimraf ./build && tsc",
+    "start": "npm run build && node build/index.js",
+    "start:dev": "nodemon",
+    "exec:api": "ts-node ./examples/api_client/main.ts",
+    "exec:web": "cd examples/web_client && webpack serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "dotenv": "^16.0.3",
+    "fs": "^0.0.1-security",
+    "nodemon": "^2.0.20",
+    "path-browserify": "^1.0.1",
+    "protoc": "^1.1.3",
+    "rimraf": "^3.0.2",
+    "stream-browserify": "^3.0.0",
+    "ts-loader": "^9.4.1",
+    "ts-node": "^10.9.1",
+    "ts-proto": "^1.132.1",
+    "typescript": "^4.9.3",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.0",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "@cosmjs/amino": "0.29.4",
+    "@cosmjs/proto-signing": "0.29.4",
+    "@cosmjs/stargate": "0.29.4",
+    "@cosmjs/tendermint-rpc": "^0.29.4",
+    "long": "^5.2.1"
+  }
+}

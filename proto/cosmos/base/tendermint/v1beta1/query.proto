@@ -1,0 +1,30 @@
+syntax = "proto3";
+package cosmos.base.tendermint.v1beta1;
+
+import "google/protobuf/any.proto";
+import "google/api/annotations.proto";
+import "tendermint/p2p/types.proto";
+import "tendermint/types/block.proto";
+import "tendermint/types/types.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "cosmos_proto/cosmos.proto";
+
+option go_package = "github.com/cosmos/cosmos-sdk/client/grpc/tmservice";
+
+// Service defines the gRPC querier service for tendermint queries.
+service Service {
+
+  // GetLatestBlock returns the latest block.
+  rpc GetLatestBlock(GetLatestBlockRequest) returns (GetLatestBlockResponse) {
+    option (google.api.http).get = "/cosmos/base/tendermint/v1beta1/blocks/latest";
+  }
+}
+
+// GetLatestBlockRequest is the request type for the Query/GetLatestBlock RPC method.
+message GetLatestBlockRequest {}
+
+// GetLatestBlockResponse is the response type for the Query/GetLatestBlock RPC method.
+message GetLatestBlockResponse {
+  .tendermint.types.BlockID block_id = 1;
+  .tendermint.types.Block   block    = 2;
+}
