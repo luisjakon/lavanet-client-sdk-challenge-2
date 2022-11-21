@@ -14,31 +14,6 @@ module.exports = {
         use: 'ts-loader',
         exclude: /node_modules/,
       },
-      {
-        test: /\.(sass|css|scss)$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: () => [require('autoprefixer')()],
-            },
-          },
-          'sass-loader',
-        ],
-      },
-      {
-        test: /\.(eot|ttf|woff|woff2)$/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            publicPath: 'fonts',
-            outputPath: 'fonts',
-          },
-        },
-      },
     ],
   },
   resolve: {
@@ -64,14 +39,11 @@ module.exports = {
     https: {
       key: fs.readFileSync('./ec_key.pem'),
       cert: fs.readFileSync('./ec_crt.pem'),
-      // cacert: fs.readFileSync("./ca.crt"),
     },
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
       'Access-Control-Allow-Headers': 'X-Requested-With, Authorization, Content-Type, Content-Length, Content-Range',
-      // 'Access-Control-Allow-Headers': 'Accept,Cache-Control,Content-Type,DNT,If-Modified-Since,Keep-Alive,Origin,User-Agent,X-Requested-With',
-      // 'Access-Control-Max-Age': '1728000',
       'Access-Control-Allow-Credentials': true,
       'Access-Control-Allow-Private-Network': true,
     },

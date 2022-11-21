@@ -27,15 +27,7 @@ export class LavanetClient extends StargateClient {
 
 // Create a LavanetClient
 export async function getClient(endpoint: string): Promise<LavanetClient> {
-  const tmClient = await Tendermint34Client.connect({
-    url: endpoint,
-    headers: {
-      // mode: 'cors',
-      // cache: 'no-store',
-      // referer: '',
-      // referrerPolicy: 'same-origin',
-    },
-  } as HttpEndpoint);
+  const tmClient = await Tendermint34Client.connect({ url: endpoint } as HttpEndpoint);
   return new LavanetClient(tmClient, {});
 }
 
